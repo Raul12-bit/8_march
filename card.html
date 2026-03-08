@@ -58,23 +58,28 @@ h1 {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  transition: transform 1s;
+  transition: transform 1s, opacity 1s;
+  opacity: 0;        /* скрываем весь блок письма */
+  pointer-events: none; /* чтобы его не трогать до клика */
+}
+
+/* открытое письмо */
+.letter.open {
+  transform: translateX(-50%) translateY(-80px);
+  opacity: 1;          /* блок появляется */
+  pointer-events: auto; /* теперь можно взаимодействовать с текстом */
 }
 
 /* текст письма */
 .letter p {
   font-size: 16px;
   line-height: 1.5;
-  opacity: 0;               /* изначально невидимый текст */
-  transition: opacity 1s;    /* плавное появление */
-}
-
-.letter.open {
-  transform: translateX(-50%) translateY(-80px);
+  opacity: 0;           /* текст пока скрыт */
+  transition: opacity 1s;
 }
 
 .letter.open p {
-  opacity: 1;               /* текст появляется при открытии письма */
+  opacity: 1;           /* текст появляется вместе с письмом */
 }
 
 /* лепестки */
